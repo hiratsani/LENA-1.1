@@ -1,109 +1,111 @@
+<p align="center">
+  <img src="Hi,%20it's%20LENA.jpg" width="100%" alt="LENA — Background Remover & Image Upscaler">
+</p>
+
 <div align="center">
 
-# LENA
+### AI image tools that run right on your computer.
 
-### Background Remover & Image Upscaler
+Remove backgrounds and upscale images easily.  
+**100% Free · No Login · No Image Uploads · No Usage Limits**
 
-**Fast, private image processing — directly on your PC.**  
-No uploads. No cloud processing. Just your hardware.
+AI models only need to be **downloaded once** when you first use them.  
+After that, LENA works **entirely on your computer** — even without internet.
 
-[**⬇ Download LENA for Windows**](PASTE_DIRECT_DOWNLOAD_LINK_DI_SINI)
+<br>
 
-Windows 10 / 11 · 64-bit · LENA 1.1
+[![Download LENA](https://img.shields.io/badge/Download-LENA_1.1-8A5CF5?style=for-the-badge&logo=windows11&logoColor=white)](PASTE_DIRECT_DOWNLOAD_LINK_HERE)
+
+**Windows 10 / 11 · 64-bit**
 
 </div>
 
 ---
 
-## ✨ Simple image processing, locally.
+## ✨ Simple from the start
 
-LENA is a lightweight Windows application for removing image backgrounds
-and upscaling images using AI models running directly on your device.
+Add a photo, choose what you want to do, and let LENA handle the rest.
 
-Your images stay on your computer.
+### 🪄 Remove Background
 
-### Background Removal
+Remove image backgrounds automatically with just a few clicks.
 
-Choose a model based on what you're working with:
+Choose the type that best matches your image:
 
-- **General** — everyday objects and products
+- **General** — products, objects, and everyday photos
 - **Human** — portraits and people
-- **Illustration** — artwork, graphics, and anime
-- Adjustable processing quality
-- Transparent background output
-- White & black background preview
+- **Illustration** — artwork, graphics, anime, and illustrations
 
-### Image Upscaling
+You can also choose the processing quality depending on how much detail you need.
 
-Enhance image resolution without complicated settings.
+### ✨ Upscale Images
+
+Make small images larger while keeping them clear and detailed.
+
+Choose between:
 
 - **2× Upscale**
 - **4× Upscale**
-- SPAN image upscaling
-- One-click processing
-- PNG & JPG export
+
+Pick your size, click **Upscale**, and LENA handles the rest.
 
 ---
 
-## 🖥️ Designed to stay simple
+## 🔒 Your photos stay with you
 
-No accounts.  
-No image uploads.  
-No waiting for a server.
+LENA processes your images **directly on your computer**.
 
-LENA performs image processing **locally on your PC**, keeping your
-workflow fast and your images private.
+Your photos are not sent somewhere else just to remove a background or upscale an image.
 
----
+**No account. No login. No image uploads.**
 
-## 📸 Preview
-
-> Add LENA screenshots here.
-
-<!--
-Example:
-
-![LENA](assets/lena-preview.png)
--->
+Once the AI model you need has been downloaded, it stays on your computer and can be used again without downloading it every time.
 
 ---
 
-## 📦 Download
+## 📥 Getting started
 
-### LENA 1.1 for Windows
+1. **Download LENA** for Windows.
+2. Install it like a normal application.
+3. Open LENA and add your photo.
+4. The first time you use a feature, LENA may ask to download the AI model it needs.
+5. Once downloaded, that model is ready to use anytime.
 
-[**Download LENA 1.1 →**](PASTE_DIRECT_DOWNLOAD_LINK_DI_SINI)
+<div align="center">
 
-**Requirements**
+### Ready to try LENA?
 
-- Windows 10 / Windows 11
+[![Download LENA](https://img.shields.io/badge/Download-LENA_1.1-8A5CF5?style=for-the-badge&logo=windows11&logoColor=white)](PASTE_DIRECT_DOWNLOAD_LINK_HERE)
+
+**Free · Windows 10 / 11 · 64-bit**
+
+</div>
+
+---
+
+## 💻 What you need
+
+- Windows 10 or Windows 11
 - 64-bit system
-- DirectX 12 compatible GPU recommended
+- Enough storage space for LENA and its AI models
+- Internet connection when an AI model needs to be downloaded
 
-> Windows may display an **Unknown Publisher** warning because the current
-> release is distributed without a code-signing certificate.
-
----
-
-## 🚀 Installation
-
-1. Download the latest LENA installer.
-2. Run `LENA-1.1-Windows-x64-Setup.exe`.
-3. Complete the installation.
-4. Open LENA and start processing.
-
-Some AI models may be downloaded when required for the first time.
+After the models you use are downloaded, image processing happens locally on your computer.
 
 ---
 
-## 🔒 Privacy
+## 🌙 Made for everyday use
 
-LENA is designed around local processing.
+LENA includes:
 
-Your images are **not uploaded to LENA servers** for background removal
-or upscaling.
-
-Processing happens directly on your device.
+- Light & Dark Mode
+- English & Indonesian
+- PNG & JPG export
+- Transparent background support
+- White & black background preview
+- Multiple background removal modes
+- 2× & 4× image upscaling
+- Local image processing
 
 ---
 
@@ -111,6 +113,12 @@ Processing happens directly on your device.
 
 ### LENA 1.1
 
+**Background Remover & Image Upscaler**
+
 Made by **Hiratsani**
+
+<br>
+
+100% Free · Fast · Local · Private
 
 </div>
