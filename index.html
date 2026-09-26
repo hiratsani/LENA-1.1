@@ -1,1 +1,792 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>LENA — Background Remover & Image Upscaler</title>
+
+  <meta
+    name="description"
+    content="A free background remover and image upscaler that runs locally on your computer."
+  >
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@400;500;600;700&family=Zalando+Sans+Expanded:wght@500;600;700&display=swap"
+    rel="stylesheet"
+  >
+
+  <style>
+
+    :root {
+      --bg: #05080d;
+      --text: #f7f7fa;
+      --muted: rgba(235, 238, 246, 0.62);
+      --soft: rgba(255, 255, 255, 0.06);
+      --border: rgba(255, 255, 255, 0.10);
+
+      --lena-gradient: linear-gradient(
+        100deg,
+        #dec477 0%,
+        #d89b8d 27%,
+        #c55ca5 52%,
+        #81447f 76%,
+        #41286f 100%
+      );
+    }
+
+
+    /* ------------------------------
+       RESET
+    ------------------------------ */
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      min-height: 100vh;
+
+      font-family: "Red Hat Display", sans-serif;
+      color: var(--text);
+
+      background:
+        radial-gradient(
+          ellipse 70% 42% at 75% -4%,
+          rgba(67, 49, 121, 0.72) 0%,
+          rgba(37, 49, 91, 0.45) 42%,
+          transparent 76%
+        ),
+
+        radial-gradient(
+          ellipse 62% 35% at 16% -5%,
+          rgba(132, 70, 77, 0.55) 0%,
+          rgba(39, 49, 75, 0.34) 50%,
+          transparent 78%
+        ),
+
+        linear-gradient(
+          180deg,
+          #263858 0%,
+          #101827 24%,
+          #070b12 47%,
+          #05080d 70%
+        );
+
+      background-attachment: fixed;
+
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+
+    /* ------------------------------
+       AMBIENT BACKGROUND
+    ------------------------------ */
+
+    .ambient {
+      position: fixed;
+      width: 550px;
+      height: 550px;
+
+      top: -300px;
+      left: 50%;
+
+      transform: translateX(-50%);
+
+      background: rgba(111, 79, 181, 0.16);
+      filter: blur(100px);
+
+      border-radius: 50%;
+
+      pointer-events: none;
+
+      animation: ambientMove 12s ease-in-out infinite alternate;
+    }
+
+    @keyframes ambientMove {
+
+      from {
+        transform: translateX(-58%) translateY(-10px);
+        opacity: .55;
+      }
+
+      to {
+        transform: translateX(-42%) translateY(45px);
+        opacity: .85;
+      }
+
+    }
+
+
+    /* ------------------------------
+       NAV
+    ------------------------------ */
+
+    nav {
+      width: min(1120px, calc(100% - 42px));
+
+      height: 82px;
+
+      margin: auto;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      position: relative;
+      z-index: 10;
+    }
+
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+
+      font-family: "Zalando Sans Expanded", sans-serif;
+      font-size: 18px;
+      font-weight: 600;
+    }
+
+
+    .brand img {
+      width: 37px;
+      height: 37px;
+
+      object-fit: contain;
+
+      transition:
+        transform .35s ease,
+        filter .35s ease;
+    }
+
+
+    .brand:hover img {
+      transform: rotate(-5deg) scale(1.06);
+
+      filter:
+        drop-shadow(0 8px 15px rgba(182, 92, 166, .20));
+    }
+
+
+    .nav-download {
+      padding: 9px 16px;
+
+      border: 1px solid var(--border);
+      border-radius: 999px;
+
+      background: rgba(255, 255, 255, 0.035);
+
+      backdrop-filter: blur(12px);
+
+      font-size: 13px;
+      font-weight: 600;
+
+      transition:
+        background .2s ease,
+        border-color .2s ease,
+        transform .2s ease;
+    }
+
+
+    .nav-download:hover {
+      transform: translateY(-1px);
+
+      background: rgba(255, 255, 255, 0.08);
+      border-color: rgba(255, 255, 255, 0.18);
+    }
+
+
+    /* ------------------------------
+       HERO
+    ------------------------------ */
+
+    main {
+      min-height: calc(100vh - 82px);
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      text-align: center;
+
+      padding:
+        45px 20px
+        110px;
+
+      position: relative;
+    }
+
+
+    .hero {
+      max-width: 930px;
+
+      animation: heroIn 1s cubic-bezier(.22, 1, .36, 1) both;
+    }
+
+
+    @keyframes heroIn {
+
+      from {
+        opacity: 0;
+        transform: translateY(24px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+    }
+
+
+    /* LOGO */
+
+    .hero-logo {
+      width: 92px;
+      height: 92px;
+
+      object-fit: contain;
+
+      margin-bottom: 31px;
+
+      filter:
+        drop-shadow(0 22px 32px rgba(0, 0, 0, .28));
+
+      animation:
+        logoIn .8s .1s cubic-bezier(.22, 1, .36, 1) both,
+        logoFloat 5s 1s ease-in-out infinite;
+    }
+
+
+    @keyframes logoIn {
+
+      from {
+        opacity: 0;
+        transform: scale(.88);
+      }
+
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+
+    }
+
+
+    @keyframes logoFloat {
+
+      0%, 100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-7px);
+      }
+
+    }
+
+
+    /* TITLE */
+
+    h1 {
+      font-family: "Zalando Sans Expanded", sans-serif;
+
+      font-size: clamp(48px, 7.1vw, 88px);
+
+      line-height: .99;
+
+      letter-spacing: -.055em;
+
+      font-weight: 600;
+    }
+
+
+    .gradient-text {
+      display: inline-block;
+
+      background: var(--lena-gradient);
+
+      background-size: 150% 100%;
+
+      -webkit-background-clip: text;
+      background-clip: text;
+
+      color: transparent;
+
+      animation: gradientMove 7s ease-in-out infinite alternate;
+    }
+
+
+    @keyframes gradientMove {
+
+      from {
+        background-position: 0% 50%;
+      }
+
+      to {
+        background-position: 100% 50%;
+      }
+
+    }
+
+
+    /* COPY */
+
+    .description {
+      max-width: 580px;
+
+      margin:
+        27px auto
+        0;
+
+      color: var(--muted);
+
+      font-size: 17px;
+      line-height: 1.65;
+    }
+
+
+    /* FEATURES */
+
+    .points {
+      margin-top: 24px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      gap: 9px;
+
+      flex-wrap: wrap;
+    }
+
+
+    .point {
+      padding: 7px 12px;
+
+      border: 1px solid rgba(255, 255, 255, .075);
+      border-radius: 999px;
+
+      background: rgba(255, 255, 255, .025);
+
+      color: rgba(255, 255, 255, .70);
+
+      font-size: 12px;
+      font-weight: 500;
+    }
+
+
+    /* DOWNLOAD */
+
+    .download {
+      position: relative;
+
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+
+      overflow: hidden;
+
+      margin-top: 34px;
+
+      min-height: 51px;
+
+      padding: 0 24px;
+
+      border-radius: 999px;
+
+      background: var(--lena-gradient);
+
+      color: white;
+
+      font-size: 14px;
+      font-weight: 700;
+
+      box-shadow:
+        0 13px 38px rgba(96, 42, 106, .22);
+
+      transition:
+        transform .25s ease,
+        box-shadow .25s ease;
+    }
+
+
+    .download::after {
+      content: "";
+
+      position: absolute;
+
+      top: -60%;
+      left: -50%;
+
+      width: 35%;
+      height: 220%;
+
+      background:
+        linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, .28),
+          transparent
+        );
+
+      transform: rotate(20deg);
+
+      transition: left .65s ease;
+    }
+
+
+    .download:hover {
+      transform: translateY(-3px);
+
+      box-shadow:
+        0 18px 48px rgba(96, 42, 106, .32);
+    }
+
+
+    .download:hover::after {
+      left: 125%;
+    }
+
+
+    .download svg {
+      width: 17px;
+      height: 17px;
+
+      margin-right: 9px;
+    }
+
+
+    .system {
+      display: block;
+
+      margin-top: 13px;
+
+      color: rgba(255, 255, 255, .35);
+
+      font-size: 11px;
+    }
+
+
+    /* ------------------------------
+       BOTTOM
+    ------------------------------ */
+
+    .bottom {
+      border-top:
+        1px solid rgba(255, 255, 255, .06);
+
+      padding:
+        70px 20px
+        45px;
+
+      text-align: center;
+
+      background:
+        rgba(0, 0, 0, .08);
+    }
+
+
+    .bottom h2 {
+      font-family:
+        "Zalando Sans Expanded",
+        sans-serif;
+
+      font-size:
+        clamp(27px, 4vw, 39px);
+
+      letter-spacing: -.04em;
+
+      font-weight: 600;
+    }
+
+
+    .bottom p {
+      max-width: 520px;
+
+      margin:
+        16px auto
+        0;
+
+      color: var(--muted);
+
+      font-size: 14px;
+      line-height: 1.65;
+    }
+
+
+    footer {
+      margin-top: 70px;
+
+      color:
+        rgba(255, 255, 255, .28);
+
+      font-size: 11px;
+    }
+
+
+    footer a {
+      margin-left: 12px;
+
+      transition:
+        color .2s ease;
+    }
+
+
+    footer a:hover {
+      color:
+        rgba(255, 255, 255, .7);
+    }
+
+
+    /* ------------------------------
+       MOBILE
+    ------------------------------ */
+
+    @media (max-width: 650px) {
+
+      nav {
+        height: 72px;
+      }
+
+
+      .brand img {
+        width: 32px;
+        height: 32px;
+      }
+
+
+      .brand {
+        font-size: 16px;
+      }
+
+
+      main {
+        min-height:
+          calc(100svh - 72px);
+
+        padding-bottom: 75px;
+      }
+
+
+      .hero-logo {
+        width: 76px;
+        height: 76px;
+
+        margin-bottom: 25px;
+      }
+
+
+      h1 {
+        font-size:
+          clamp(43px, 13vw, 62px);
+      }
+
+
+      .description {
+        font-size: 15px;
+
+        padding: 0 8px;
+      }
+
+
+      .points {
+        max-width: 340px;
+
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+    }
+
+
+    /* Respect accessibility settings */
+
+    @media (prefers-reduced-motion: reduce) {
+
+      *,
+      *::before,
+      *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+      }
+
+    }
+
+  </style>
+
+</head>
+
+
+<body>
+
+  <div class="ambient"></div>
+
+
+  <!-- NAV -->
+
+  <nav>
+
+    <a href="#" class="brand">
+
+      <img
+        src="Lena%20Logo.png"
+        alt="LENA"
+      >
+
+      <span>LENA</span>
+
+    </a>
+
+
+    <a
+      class="nav-download"
+      href="https://github.com/hiratsani/LENA-1.1/releases/download/v1.1.0/LENA-1.1-Windows-x64-Setup.exe"
+    >
+      Download
+    </a>
+
+  </nav>
+
+
+  <!-- HERO -->
+
+  <main>
+
+    <div class="hero">
+
+      <img
+        class="hero-logo"
+        src="Lena%20Logo.png"
+        alt="LENA Logo"
+      >
+
+
+      <h1>
+
+        Remove backgrounds.<br>
+
+        <span class="gradient-text">
+          Upscale images.
+        </span>
+
+      </h1>
+
+
+      <p class="description">
+
+        A simple image tool that runs right on your computer.
+        No login, no image uploads, and completely free.
+
+      </p>
+
+
+      <div class="points">
+
+        <span class="point">
+          No Login
+        </span>
+
+        <span class="point">
+          No Uploads
+        </span>
+
+        <span class="point">
+          100% Free
+        </span>
+
+        <span class="point">
+          Local Processing
+        </span>
+
+      </div>
+
+
+      <a
+        class="download"
+        href="https://github.com/hiratsani/LENA-1.1/releases/download/v1.1.0/LENA-1.1-Windows-x64-Setup.exe"
+      >
+
+        <svg
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path d="M12 3v12"></path>
+          <path d="m7 10 5 5 5-5"></path>
+          <path d="M5 21h14"></path>
+        </svg>
+
+        Download LENA 1.1
+
+      </a>
+
+
+      <span class="system">
+        Windows 10 / 11 · 64-bit
+      </span>
+
+    </div>
+
+  </main>
+
+
+  <!-- ONE SMALL EXPLANATION -->
+
+  <section class="bottom">
+
+    <h2>
+      Download once.
+      <span class="gradient-text">
+        Run locally.
+      </span>
+    </h2>
+
+
+    <p>
+
+      LENA downloads the files it needs the first time you use a feature.
+      After that, your images are processed directly on your computer.
+
+    </p>
+
+
+    <footer>
+
+      LENA 1.1 · Made by Hiratsani
+
+      <a
+        href="https://github.com/hiratsani/LENA-1.1"
+      >
+        GitHub
+      </a>
+
+    </footer>
+
+  </section>
+
+</body>
+
+</html>
