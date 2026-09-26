@@ -14,7 +14,7 @@ After that, LENA works **entirely on your computer** — even without internet.
 
 <br>
 
-[![Download LENA](https://img.shields.io/badge/Download-LENA_1.1-8A5CF5?style=for-the-badge&logo=windows11&logoColor=white)](PASTE_DIRECT_DOWNLOAD_LINK_HERE)
+[![Download LENA](https://img.shields.io/badge/Download-LENA_1.1-8A5CF5?style=for-the-badge&logo=windows11&logoColor=white)](https://github.com/hiratsani/LENA-1.1/releases/download/v1.1.0/LENA-1.1-Windows-x64-Setup.exe)
 
 **Windows 10 / 11 · 64-bit**
 
@@ -75,7 +75,7 @@ Once the AI model you need has been downloaded, it stays on your computer and ca
 
 ### Ready to try LENA?
 
-[![Download LENA](https://img.shields.io/badge/Download-LENA_1.1-8A5CF5?style=for-the-badge&logo=windows11&logoColor=white)](PASTE_DIRECT_DOWNLOAD_LINK_HERE)
+[![Download LENA](https://img.shields.io/badge/Download-LENA_1.1-8A5CF5?style=for-the-badge&logo=windows11&logoColor=white)](https://github.com/hiratsani/LENA-1.1/releases/download/v1.1.0/LENA-1.1-Windows-x64-Setup.exe)
 
 **Free · Windows 10 / 11 · 64-bit**
 
@@ -88,7 +88,7 @@ Once the AI model you need has been downloaded, it stays on your computer and ca
 - Windows 10 or Windows 11
 - 64-bit system
 - Enough storage space for LENA and its AI models
-- Internet connection when an AI model needs to be downloaded
+- Internet connection only when an AI model needs to be downloaded
 
 After the models you use are downloaded, image processing happens locally on your computer.
 
@@ -119,6 +119,6 @@ Made by **Hiratsani**
 
 <br>
 
-100% Free · Fast · Local · Private
+**100% Free · Fast · Local · Private**
 
 </div>
