@@ -16,7 +16,7 @@ Optional **Better** and **Best** models only need to be downloaded once.
 
 <br>
 
-[![Download LENA](https://img.shields.io/badge/Download-LENA_1.2-8A5CF5?style=for-the-badge&logo=windows11&logoColor=white)](https://github.com/hiratsani/LENA-1.1/releases)
+[![Download LENA](https://img.shields.io/badge/Download-LENA_1.2-8A5CF5?style=for-the-badge&logo=windows11&logoColor=white)]([https://github.com/hiratsani/LENA-1.1/releases](https://github.com/hiratsani/LENA-BG-Removal-Upscaler/releases/download/v1.2.0/LENA.1.2.exe))
 
 **Windows 10 / 11 · 64-bit**
 
