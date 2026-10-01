@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="Hi,%20it's%20LENA.jpg" width="100%" alt="LENA — Background Remover & Image Upscaler">
+  <img src="Hi,%20it's%20LENA.jpg" width="100%" alt="LENA 1.2 — Background Remover & Image Upscaler">
 </p>
 
 <div align="center">
@@ -9,12 +9,14 @@
 Remove backgrounds and upscale images easily.  
 **100% Free · No Login · No Image Uploads · No Usage Limits**
 
-AI models only need to be **downloaded once** when you first use them.  
-After that, LENA works **entirely on your computer** — even without internet.
+**Basic background removal, Hair & Fur refinement, and SPAN upscaling models are included.**  
+Start processing offline immediately after installation.
+
+Optional **Better** and **Best** models only need to be downloaded once.
 
 <br>
 
-[![Download LENA](https://img.shields.io/badge/Download-LENA_1.1-8A5CF5?style=for-the-badge&logo=windows11&logoColor=white)](https://github.com/hiratsani/LENA-1.1/releases/download/v1.1.0/LENA-1.1-Windows-x64-Setup.exe)
+[![Download LENA](https://img.shields.io/badge/Download-LENA_1.2-8A5CF5?style=for-the-badge&logo=windows11&logoColor=white)](https://github.com/hiratsani/LENA-1.1/releases)
 
 **Windows 10 / 11 · 64-bit**
 
@@ -30,24 +32,28 @@ Add a photo, choose what you want to do, and let LENA handle the rest.
 
 Remove image backgrounds automatically with just a few clicks.
 
-Choose the type that best matches your image:
+Choose your processing quality:
 
-- **General** — products, objects, and everyday photos
-- **Human** — portraits and people
-- **Illustration** — artwork, graphics, anime, and illustrations
+- **Basic** — quick results, light on your device; included in the installer
+- **Better** — more detail with balanced performance; optional download
+- **Best** — maximum detail, uses more resources; optional download
 
-You can also choose the processing quality depending on how much detail you need.
+All three quality options work across different image subjects, without choosing a separate General, Human, or Illustration mode.
+
+Need extra refinement around hair or fur? Enable **Hair & Fur**, powered by **ViTMatte** and included in the installer.
+
+Only turn it on when hair or fur is visible in your photo.
 
 ### ✨ Upscale Images
 
-Make small images larger while keeping them clear and detailed.
+Enlarge small images with AI upscaling powered by **SPAN**.
 
 Choose between:
 
 - **2× Upscale**
 - **4× Upscale**
 
-Pick your size, click **Upscale**, and LENA handles the rest.
+Pick your size, click **Upscale**, and LENA handles the rest. The SPAN model is included, so no additional model download is needed.
 
 ---
 
@@ -55,42 +61,44 @@ Pick your size, click **Upscale**, and LENA handles the rest.
 
 LENA processes your images **directly on your computer**.
 
-Your photos are not sent somewhere else just to remove a background or upscale an image.
+Your photos stay on your PC while LENA removes backgrounds or upscales images.
 
 **No account. No login. No image uploads.**
 
-Once the AI model you need has been downloaded, it stays on your computer and can be used again without downloading it every time.
+Optional models are downloaded to your computer once and can be reused offline.
 
 ---
 
 ## 📥 Getting started
 
-1. **Download LENA** for Windows.
-2. Install it like a normal application.
+1. Download **LENA 1.2.exe** from the release assets.
+2. Run the installer.
 3. Open LENA and add your photo.
-4. The first time you use a feature, LENA may ask to download the AI model it needs.
-5. Once downloaded, that model is ready to use anytime.
+4. Use **Basic**, **Hair & Fur**, or **Upscale** immediately — their models are already included.
+5. Download **Better** or **Best** from the application whenever you need them.
 
 <div align="center">
 
 ### Ready to try LENA?
 
-[![Download LENA](https://img.shields.io/badge/Download-LENA_1.1-8A5CF5?style=for-the-badge&logo=windows11&logoColor=white)](https://github.com/hiratsani/LENA-1.1/releases/download/v1.1.0/LENA-1.1-Windows-x64-Setup.exe)
+[![Download LENA](https://img.shields.io/badge/Download-LENA_1.2-8A5CF5?style=for-the-badge&logo=windows11&logoColor=white)](https://github.com/hiratsani/LENA-1.1/releases)
 
 **Free · Windows 10 / 11 · 64-bit**
 
 </div>
 
+> Windows SmartScreen may show an “Unknown Publisher” warning because LENA is currently distributed without a code-signing certificate.
+
 ---
 
 ## 💻 What you need
 
-- Windows 10 or Windows 11
-- 64-bit system
+- Windows 10 or Windows 11 — 64-bit
 - Enough storage space for LENA and its AI models
-- Internet connection only when an AI model needs to be downloaded
+- Recommended: GPU with DirectX 12 support
+- Internet connection to download the installer and optional **Better** or **Best** models
 
-After the models you use are downloaded, image processing happens locally on your computer.
+The included features work offline after installation. Optional models also work offline once downloaded.
 
 ---
 
@@ -98,20 +106,21 @@ After the models you use are downloaded, image processing happens locally on you
 
 LENA includes:
 
+- **Basic, Better & Best** background removal quality options
+- **Hair & Fur** refinement powered by ViTMatte
+- **2× & 4×** image upscaling powered by SPAN
 - Light & Dark Mode
-- English & Indonesian
+- English & Indonesian interface
 - PNG & JPG export
 - Transparent background support
 - White & black background preview
-- Multiple background removal modes
-- 2× & 4× image upscaling
 - Local image processing
 
 ---
 
 <div align="center">
 
-### LENA 1.1
+### LENA 1.2
 
 **Background Remover & Image Upscaler**
 
@@ -119,6 +128,6 @@ Made by **Hiratsani**
 
 <br>
 
-**100% Free · Fast · Local · Private**
+**100% Free · Local · Private**
 
 </div>
